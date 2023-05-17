@@ -1,0 +1,201 @@
+// no 1
+/**#include <stdio.h>
+
+main() {
+    for (int i = 1; i <= 300; i++) {
+        if (i % 5 != 0) {
+            printf("%d\n", i);
+        }
+    }
+
+}
+**/
+
+// no 2
+
+/**#include <stdio.h>
+
+main() {
+    int num, digit;
+
+    printf("Enter a number (at least three digits): ");
+    scanf("%d", &num);
+
+    // Extract digits from the number and store them in an array
+    int digits[10];
+    int count = 0;
+    while (num > 0) {
+        digit = num % 10;
+        digits[count] = digit;
+        count++;
+        num /= 10;
+    }
+
+    // It will print the digits in reverse order
+    for (int i = count - 1; i >= 0; i--) {
+        switch (digits[i]) {
+            case 0:
+                printf("Zero\n");
+                break;
+            case 1:
+                printf("One\n");
+                break;
+            case 2:
+                printf("Two\n");
+                break;
+            case 3:
+                printf("Three\n");
+                break;
+            case 4:
+                printf("Four\n");
+                break;
+            case 5:
+                printf("Five\n");
+                break;
+            case 6:
+                printf("Six\n");
+                break;
+            case 7:
+                printf("Seven\n");
+                break;
+            case 8:
+                printf("Eight\n");
+                break;
+            case 9:
+                printf("Nine\n");
+                break;
+            default:
+                printf("Error!!!! Invalid!\n");
+                return 0;
+        }
+    }
+
+
+}
+**/
+
+//no 3
+/**#include <stdio.h>
+
+main() {
+    int dori[10];
+
+    printf("Enter 10 random numbers:\n");
+    for (int i = 0; i < 10; i++) {
+        scanf("%d", &dori[i]);
+    }
+
+    //in ascending order
+    for (int i = 0; i < 9; i++) {
+        for (int j = i + 1; j < 10; j++) {
+            if (dori[i] > dori[j]) {
+                int temp = dori[i];
+                dori[i] = dori[j];
+                dori[j] = temp;
+            }
+        }
+    }
+
+    //Print in ascending order
+    printf("Numbers in ascending order: ");
+    for (int i = 0; i < 10; i++) {
+        printf("%d ", dori[i]);
+    }
+    printf("\n");
+
+    // Sort the array in descending order
+    for (int i = 0; i < 9; i++) {
+        for (int j = i + 1; j < 10; j++) {
+            if (dori[i] < dori[j]) {
+                int temp = dori[i];
+                dori[i] = dori[j];
+                dori[j] = temp;
+            }
+        }
+    }
+
+    // Print the array in descending order
+    printf("Numbers in descending order: ");
+    for (int i = 0; i < 10; i++) {
+        printf("%d ", dori[i]);
+    }
+    printf("\n");
+
+}
+**/
+
+// no 4
+
+/**
+#include <stdio.h>
+
+float sum_of_largest_two(float a, float b, float c) {
+    float sum = 0;
+    if (a >= b && a >= c) {
+        sum = a;
+        if (b >= c) {
+            sum += b;
+        } else {
+            sum += c;
+        }
+    } else if (b >= a && b >= c) {
+        sum = b;
+        if (a >= c) {
+            sum += a;
+        } else {
+            sum += c;
+        }
+    } else if (c >= a && c >= b) {
+        sum = c;
+        if (a >= b) {
+            sum += a;
+        } else {
+            sum += b;
+        }
+    }
+    return sum;
+}
+
+void square(float num) {
+    float result = num * num;
+    printf("The square of the number is: %.2f\n", result);
+}
+
+main() {
+    float num1, num2, num3;
+    printf("Enter three float values: ");
+    scanf("%f %f %f", &num1, &num2, &num3);
+
+    float sum = sum_of_largest_two(num1, num2, num3);
+    printf("The sum of the largest two values is: %.2f\n", sum);
+
+    square(sum);
+
+
+}
+**/
+
+//5 no
+#include <stdio.h>
+#include <math.h>
+
+double arb(double x) {
+    double result = 1.0;
+    double term = x;
+    int i = 1;
+    while (fabs(term) > 1e-8) {
+        result += term;
+        term = term * x * x / ((2 * i) * (2 * i + 1));
+        i++;
+    }
+    return result;
+}
+
+int main() {
+    double x;
+    printf("Enter a value for x: ");
+    scanf("%lf", &x);
+    double result = arb(x);
+    printf("arb(%.2f) = %.6f\n", x, result);
+    return 0;
+}
